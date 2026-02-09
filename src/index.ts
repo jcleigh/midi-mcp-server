@@ -7,6 +7,7 @@ import {
   GetPromptRequestSchema,
   ListResourcesRequestSchema,
   ReadResourceRequestSchema,
+  ListResourceTemplatesRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 import { MidiService } from "./services/MidiService.js";
@@ -878,6 +879,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 // --- Resources ---
+
+server.setRequestHandler(ListResourceTemplatesRequestSchema, async () => {
+  return {
+    resourceTemplates: [],
+  };
+});
 
 server.setRequestHandler(ListResourcesRequestSchema, async () => {
   return {
